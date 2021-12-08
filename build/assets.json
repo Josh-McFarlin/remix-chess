@@ -1,0 +1,58 @@
+{
+  "version": "272704df",
+  "entry": {
+    "module": "/build/entry.client-AFNUQNR7.js",
+    "imports": [
+      "/build/_shared/chunk-P3SSRIZV.js",
+      "/build/_shared/chunk-CW6AOW5M.js"
+    ]
+  },
+  "routes": {
+    "root": {
+      "id": "root",
+      "path": "",
+      "module": "/build/root-J3OZMACM.js",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasCatchBoundary": true,
+      "hasErrorBoundary": true
+    },
+    "routes/index": {
+      "id": "routes/index",
+      "parentId": "root",
+      "index": true,
+      "module": "/build/routes/index-PV3IOSAG.js",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/move/$coordinate": {
+      "id": "routes/move/$coordinate",
+      "parentId": "root",
+      "path": "move/:coordinate",
+      "module": "/build/routes/move/$coordinate-JYUFUHNP.js",
+      "imports": [
+        "/build/_shared/chunk-QVYJ6MBM.js"
+      ],
+      "hasAction": false,
+      "hasLoader": true,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/piece/$coordinate": {
+      "id": "routes/piece/$coordinate",
+      "parentId": "root",
+      "path": "piece/:coordinate",
+      "module": "/build/routes/piece/$coordinate-JSUXO3GV.js",
+      "imports": [
+        "/build/_shared/chunk-QVYJ6MBM.js"
+      ],
+      "hasAction": false,
+      "hasLoader": true,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    }
+  },
+  "url": "/build/manifest-272704DF.js"
+}

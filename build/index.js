@@ -409,7 +409,7 @@ var loader = async ({
   params,
   request
 }) => {
-  const gameId = request.headers.get("Fly-Client-IP") || "GENERAL";
+  const gameId = request.headers.get("referer") === "https://remix-chess.fly.dev/" ? request.headers.get("Fly-Client-IP") || "GENERAL" : "GENERAL";
   const { coordinate } = params;
   const upperCoord = (coordinate || "").toUpperCase();
   const piece = await getGamePiece(gameId, upperCoord);
@@ -436,7 +436,8 @@ var loader2 = async ({
   params,
   request
 }) => {
-  const gameId = request.headers.get("Fly-Client-IP") || "GENERAL";
+  const gameId = request.headers.get("referer") === "https://remix-chess.fly.dev/" ? request.headers.get("Fly-Client-IP") || "GENERAL" : "GENERAL";
+  const redirectUrl = request.headers.get("referer") === "https://remix-chess.fly.dev/" ? "https://remix-chess.fly.dev/" : "https://github.com/Josh-McFarlin";
   const { coordinate } = params;
   if (!gameId || !coordinate) {
     return new Response("Please provide all parameters!", {
@@ -451,13 +452,10 @@ var loader2 = async ({
     } else {
       game.move(upperCoord);
     }
-    const redirectUrl = request.headers.get("referer") || "https://github.com/Josh-McFarlin";
     return (0, import_remix3.redirect)(redirectUrl);
   } catch (error) {
     console.error(error);
-    return new Response("Failed!", {
-      status: 500
-    });
+    return (0, import_remix3.redirect)(redirectUrl);
   }
 };
 

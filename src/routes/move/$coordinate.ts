@@ -9,7 +9,15 @@ export const loader: LoaderFunction = async ({
   params,
   request,
 }): Promise<Response> => {
-  const gameId = request.headers.get("Fly-Client-IP") || "GENERAL";
+  // GitHub disables this functionality, so serve GENERAL game on GitHub
+  const gameId =
+    request.headers.get("referer") === "https://remix-chess.fly.dev/"
+      ? request.headers.get("Fly-Client-IP") || "GENERAL"
+      : "GENERAL";
+  const redirectUrl =
+    request.headers.get("referer") === "https://remix-chess.fly.dev/"
+      ? "https://remix-chess.fly.dev/"
+      : "https://github.com/Josh-McFarlin";
   const { coordinate } = params;
 
   if (!gameId || !coordinate) {
@@ -29,15 +37,10 @@ export const loader: LoaderFunction = async ({
       game.move(upperCoord);
     }
 
-    const redirectUrl =
-      request.headers.get("referer") || "https://github.com/Josh-McFarlin";
-
     return redirect(redirectUrl);
   } catch (error) {
     console.error(error);
 
-    return new Response("Failed!", {
-      status: 500,
-    });
+    return redirect(redirectUrl);
   }
 };

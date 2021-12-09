@@ -1,5 +1,5 @@
 {
-  "version": "e62ac34e",
+  "version": "1b489451",
   "entry": {
     "module": "/build/entry.client-LFLX62UE.js",
     "imports": [
@@ -32,7 +32,7 @@
       "id": "routes/move/$coordinate",
       "parentId": "root",
       "path": "move/:coordinate",
-      "module": "/build/routes/move/$coordinate-WXALISDM.js",
+      "module": "/build/routes/move/$coordinate-2WAWR5XH.js",
       "imports": [
         "/build/_shared/chunk-FL7KHF2S.js"
       ],
@@ -45,7 +45,7 @@
       "id": "routes/piece/$coordinate",
       "parentId": "root",
       "path": "piece/:coordinate",
-      "module": "/build/routes/piece/$coordinate-AJCK7QH6.js",
+      "module": "/build/routes/piece/$coordinate-SOH2SBHQ.js",
       "imports": [
         "/build/_shared/chunk-FL7KHF2S.js"
       ],
@@ -55,5 +55,5 @@
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-E62AC34E.js"
+  "url": "/build/manifest-1B489451.js"
 }

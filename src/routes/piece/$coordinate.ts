@@ -8,7 +8,11 @@ export const loader: LoaderFunction = async ({
   params,
   request,
 }): Promise<Response> => {
-  const gameId = request.headers.get("Fly-Client-IP") || "GENERAL";
+  // GitHub disables this functionality, so serve GENERAL game on GitHub
+  const gameId =
+    request.headers.get("referer") === "https://remix-chess.fly.dev/"
+      ? request.headers.get("Fly-Client-IP") || "GENERAL"
+      : "GENERAL";
   const { coordinate } = params;
 
   const upperCoord = (coordinate || "").toUpperCase();

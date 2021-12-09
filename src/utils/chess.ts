@@ -130,6 +130,27 @@ const isSquareLight = (coordinate: string): boolean => {
   return (ascii + num) % 2 !== 0;
 };
 
+const storedImages: Map<string, string> = new Map<string, string>();
+const getImage = async (images: string[]): Promise<string> => {
+  const id = images.join("-");
+
+  if (storedImages.has(id)) {
+    return storedImages.get(id)!;
+  } else {
+    const image = await mergeImages(
+      images.map((i) => path.resolve(path.join(__dirname, "..", i))),
+      {
+        Canvas: Canvas,
+        Image: Image,
+      }
+    );
+
+    storedImages.set(id, image);
+
+    return image;
+  }
+};
+
 export const getGamePiece = async (
   gameId: string,
   coordinate: string
@@ -165,13 +186,7 @@ export const getGamePiece = async (
       images.push(possiblePos);
     }
 
-    return mergeImages(
-      images.map((i) => path.resolve(path.join(__dirname, "..", i))),
-      {
-        Canvas: Canvas,
-        Image: Image,
-      }
-    );
+    return getImage(images);
   } catch (error) {
     console.error(error);
 

@@ -41,16 +41,21 @@ class Game {
     this.gameId = gameId;
     this.#cache = flatCache.load(gameId, path.resolve("/data"));
 
-    const storedGame = this.#cache.getKey(gameKey);
-    if (storedGame != null) {
-      this.#game = new jsChessEngine.Game(storedGame);
-      this.selectedPiece = this.#cache.getKey(selKey) || null;
+    try {
+      const storedGame = this.#cache.getKey(gameKey);
+      if (storedGame != null) {
+        this.#game = new jsChessEngine.Game(storedGame);
+        this.selectedPiece = this.#cache.getKey(selKey) || null;
 
-      if (this.#game.exportJson().isFinished) {
+        if (this.#game.exportJson().isFinished) {
+          this.#game = new jsChessEngine.Game();
+          this.selectedPiece = null;
+        }
+      } else {
         this.#game = new jsChessEngine.Game();
         this.selectedPiece = null;
       }
-    } else {
+    } catch (error) {
       this.#game = new jsChessEngine.Game();
       this.selectedPiece = null;
     }
@@ -173,8 +178,6 @@ export const getGamePiece = async (
     return mergeImages(
       [path.resolve(path.join(__dirname, "..", errorIcon)), "base64"],
       {
-        width: 75,
-        height: 75,
         Canvas: Canvas,
         Image: Image,
       }

@@ -27,7 +27,7 @@ const pendingMove = require("../assets/chess/blue_glow.png");
 const possiblePos = require("../assets/chess/green_glow.png");
 const errorIcon = require("../assets/chess/exclamation_mark.png");
 
-const aiLevel = 1;
+const aiLevel = 2;
 const gameKey = "GAME";
 const selKey = "SELECTED";
 

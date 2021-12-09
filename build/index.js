@@ -463,16 +463,35 @@ var test_fly_exports = {};
 __export(test_fly_exports, {
   loader: () => loader3
 });
+var import_path2 = __toModule(require("path"));
+var import_fs = __toModule(require("fs"));
 var loader3 = async ({
   request
 }) => {
   try {
-    console.log("request", JSON.stringify(request, null, 2));
-    console.log("headers", JSON.stringify(request.headers, null, 2));
-    console.log("header entries", JSON.stringify([...request.headers.entries()], null, 2));
     console.log("Fly-Client-IP", request.headers.get("Fly-Client-IP"));
-    console.log("X-Forwarded-For", request.headers.get("X-Forwarded-For"));
-    console.log("Via", request.headers.get("Via"));
+    console.log("Fly-Client-IP", request.headers.get("referer"));
+    try {
+      const pathName = import_path2.default.resolve(__dirname, "data");
+      const contents = import_fs.default.readdirSync(pathName, { withFileTypes: true });
+      console.log(pathName, JSON.stringify(contents.map((c) => c.name), null, 2));
+    } catch (error) {
+      console.error((error == null ? void 0 : error.message) || error);
+    }
+    try {
+      const pathName = import_path2.default.resolve(__dirname, "..", "data");
+      const contents = import_fs.default.readdirSync(pathName, { withFileTypes: true });
+      console.log(pathName, JSON.stringify(contents.map((c) => c.name), null, 2));
+    } catch (error) {
+      console.error((error == null ? void 0 : error.message) || error);
+    }
+    try {
+      const pathName = "/data";
+      const contents = import_fs.default.readdirSync(pathName, { withFileTypes: true });
+      console.log(pathName, JSON.stringify(contents.map((c) => c.name), null, 2));
+    } catch (error) {
+      console.error((error == null ? void 0 : error.message) || error);
+    }
     return new Response("Check logs!", {
       status: 200
     });

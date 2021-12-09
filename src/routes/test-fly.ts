@@ -1,18 +1,70 @@
 import type { LoaderFunction } from "remix";
+import path from "path";
+import fs from "fs";
 
 export const loader: LoaderFunction = async ({
   request,
 }): Promise<Response> => {
   try {
-    console.log("request", JSON.stringify(request, null, 2));
-    console.log("headers", JSON.stringify(request.headers, null, 2));
-    console.log(
-      "header entries",
-      JSON.stringify([...request.headers.entries()], null, 2)
-    );
     console.log("Fly-Client-IP", request.headers.get("Fly-Client-IP"));
-    console.log("X-Forwarded-For", request.headers.get("X-Forwarded-For"));
-    console.log("Via", request.headers.get("Via"));
+    console.log("Fly-Client-IP", request.headers.get("referer"));
+
+    try {
+      const pathName = path.resolve(__dirname, "data");
+
+      const contents = fs.readdirSync(pathName, { withFileTypes: true });
+
+      console.log(
+        pathName,
+        JSON.stringify(
+          contents.map((c) => c.name),
+          null,
+          2
+        )
+      );
+    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      console.error(error?.message || error);
+    }
+
+    try {
+      const pathName = path.resolve(__dirname, "..", "data");
+
+      const contents = fs.readdirSync(pathName, { withFileTypes: true });
+
+      console.log(
+        pathName,
+        JSON.stringify(
+          contents.map((c) => c.name),
+          null,
+          2
+        )
+      );
+    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      console.error(error?.message || error);
+    }
+
+    try {
+      const pathName = "/data";
+
+      const contents = fs.readdirSync(pathName, { withFileTypes: true });
+
+      console.log(
+        pathName,
+        JSON.stringify(
+          contents.map((c) => c.name),
+          null,
+          2
+        )
+      );
+    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      console.error(error?.message || error);
+    }
 
     return new Response("Check logs!", {
       status: 200,

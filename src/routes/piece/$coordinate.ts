@@ -8,7 +8,7 @@ export const loader: LoaderFunction = async ({
   params,
   request,
 }): Promise<Response> => {
-  const gameId = request.headers.get("x-forwarded-for") || "GENERAL";
+  const gameId = request.headers.get("Fly-Client-IP") || "GENERAL";
   const { coordinate } = params;
 
   const upperCoord = (coordinate || "").toUpperCase();

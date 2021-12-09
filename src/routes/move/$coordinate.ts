@@ -9,7 +9,7 @@ export const loader: LoaderFunction = async ({
   params,
   request,
 }): Promise<Response> => {
-  const gameId = request.headers.get("x-forwarded-for") || "GENERAL";
+  const gameId = request.headers.get("Fly-Client-IP") || "GENERAL";
   const { coordinate } = params;
 
   if (!gameId || !coordinate) {
@@ -29,7 +29,8 @@ export const loader: LoaderFunction = async ({
       game.move(upperCoord);
     }
 
-    const redirectUrl = request.headers.get("referer") || "/";
+    const redirectUrl =
+      request.headers.get("referer") || "https://github.com/Josh-McFarlin";
 
     return redirect(redirectUrl);
   } catch (error) {

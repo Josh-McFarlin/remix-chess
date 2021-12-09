@@ -39,7 +39,7 @@ class Game {
 
   constructor(gameId: string) {
     this.gameId = gameId;
-    this.#cache = flatCache.load(gameId, path.resolve("./data"));
+    this.#cache = flatCache.load(gameId, path.resolve("/data"));
 
     const storedGame = this.#cache.getKey(gameKey);
     if (storedGame != null) {

@@ -298,7 +298,7 @@ var Game = class {
     __privateAdd(this, _cache, void 0);
     __privateAdd(this, _game, void 0);
     this.gameId = gameId;
-    __privateSet(this, _cache, import_flat_cache.default.load(gameId));
+    __privateSet(this, _cache, import_flat_cache.default.load(gameId, import_path.default.resolve("./data")));
     const storedGame = __privateGet(this, _cache).getKey(gameKey);
     if (storedGame != null) {
       __privateSet(this, _game, new import_js_chess_engine.default.Game(storedGame));
@@ -317,7 +317,7 @@ var Game = class {
     const json = __privateGet(this, _game).exportJson();
     __privateGet(this, _cache).setKey(gameKey, json);
     __privateGet(this, _cache).setKey(selKey, this.selectedPiece);
-    __privateGet(this, _cache).save();
+    __privateGet(this, _cache).save(true);
     return json;
   }
   move(to) {
@@ -334,7 +334,7 @@ var Game = class {
       __privateGet(this, _cache).setKey(gameKey, json);
       this.selectedPiece = null;
       __privateGet(this, _cache).setKey(selKey, null);
-      __privateGet(this, _cache).save();
+      __privateGet(this, _cache).save(true);
     }
   }
   state() {
@@ -458,6 +458,32 @@ var loader2 = async ({
   }
 };
 
+// route-module:/Users/joshmcfarlin/Code/Web/remix-chess/src/routes/test-fly.ts
+var test_fly_exports = {};
+__export(test_fly_exports, {
+  loader: () => loader3
+});
+var loader3 = async ({
+  request
+}) => {
+  try {
+    console.log("request", JSON.stringify(request, null, 2));
+    console.log("headers", JSON.stringify(request.headers, null, 2));
+    console.log("header entries", JSON.stringify([...request.headers.entries()], null, 2));
+    console.log("Fly-Client-IP", request.headers.get("Fly-Client-IP"));
+    console.log("X-Forwarded-For", request.headers.get("X-Forwarded-For"));
+    console.log("Via", request.headers.get("Via"));
+    return new Response("Check logs!", {
+      status: 200
+    });
+  } catch (error) {
+    console.error(error);
+    return new Response("Failed!", {
+      status: 500
+    });
+  }
+};
+
 // route-module:/Users/joshmcfarlin/Code/Web/remix-chess/src/routes/index.tsx
 var routes_exports = {};
 __export(routes_exports, {
@@ -515,6 +541,14 @@ var routes = {
     index: void 0,
     caseSensitive: void 0,
     module: coordinate_exports2
+  },
+  "routes/test-fly": {
+    id: "routes/test-fly",
+    parentId: "root",
+    path: "test-fly",
+    index: void 0,
+    caseSensitive: void 0,
+    module: test_fly_exports
   },
   "routes/index": {
     id: "routes/index",

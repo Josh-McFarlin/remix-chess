@@ -1,10 +1,10 @@
 {
-  "version": "2afccd2d",
+  "version": "98f73771",
   "entry": {
-    "module": "/build/entry.client-6ZOB6QKO.js",
+    "module": "/build/entry.client-2NCCGWH7.js",
     "imports": [
-      "/build/_shared/chunk-62OEEOO5.js",
-      "/build/_shared/chunk-RSSXIRXZ.js",
+      "/build/_shared/chunk-DEW2T3GW.js",
+      "/build/_shared/chunk-YE6DVG5Y.js",
       "/build/_shared/chunk-CW6AOW5M.js"
     ]
   },
@@ -12,7 +12,7 @@
     "root": {
       "id": "root",
       "path": "",
-      "module": "/build/root-QYGJ67G2.js",
+      "module": "/build/root-7U4LICBD.js",
       "hasAction": false,
       "hasLoader": false,
       "hasCatchBoundary": true,
@@ -32,9 +32,9 @@
       "id": "routes/move/$coordinate",
       "parentId": "root",
       "path": "move/:coordinate",
-      "module": "/build/routes/move/$coordinate-QYN765K2.js",
+      "module": "/build/routes/move/$coordinate-CEMWZ25F.js",
       "imports": [
-        "/build/_shared/chunk-LT3KXT6X.js"
+        "/build/_shared/chunk-H54OWMFA.js"
       ],
       "hasAction": false,
       "hasLoader": true,
@@ -45,15 +45,25 @@
       "id": "routes/piece/$coordinate",
       "parentId": "root",
       "path": "piece/:coordinate",
-      "module": "/build/routes/piece/$coordinate-YGUKVF5F.js",
+      "module": "/build/routes/piece/$coordinate-EJNXUSE3.js",
       "imports": [
-        "/build/_shared/chunk-LT3KXT6X.js"
+        "/build/_shared/chunk-H54OWMFA.js"
       ],
+      "hasAction": false,
+      "hasLoader": true,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/test-fly": {
+      "id": "routes/test-fly",
+      "parentId": "root",
+      "path": "test-fly",
+      "module": "/build/routes/test-fly-43K7PRMR.js",
       "hasAction": false,
       "hasLoader": true,
       "hasCatchBoundary": false,
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-2AFCCD2D.js"
+  "url": "/build/manifest-98F73771.js"
 }

@@ -39,7 +39,7 @@ class Game {
 
   constructor(gameId: string) {
     this.gameId = gameId;
-    this.#cache = flatCache.load(gameId);
+    this.#cache = flatCache.load(gameId, path.resolve("./data"));
 
     const storedGame = this.#cache.getKey(gameKey);
     if (storedGame != null) {
@@ -62,7 +62,7 @@ class Game {
     const json = this.#game.exportJson();
     this.#cache.setKey(gameKey, json);
     this.#cache.setKey(selKey, this.selectedPiece);
-    this.#cache.save();
+    this.#cache.save(true);
 
     return json;
   }
@@ -83,7 +83,7 @@ class Game {
       this.#cache.setKey(gameKey, json);
       this.selectedPiece = null;
       this.#cache.setKey(selKey, null);
-      this.#cache.save();
+      this.#cache.save(true);
     }
   }
 

@@ -3,6 +3,7 @@
  */
 import type { LoaderFunction } from "remix";
 import { loadGame } from "~/utils/chess";
+import { redirect } from "remix";
 
 export const loader: LoaderFunction = async ({
   params,
@@ -21,15 +22,16 @@ export const loader: LoaderFunction = async ({
     const upperCoord = coordinate.toUpperCase();
 
     const game = loadGame(gameId);
-    const state =
-      game.selectedPiece == null
-        ? game.select(upperCoord)
-        : game.move(upperCoord);
-    const stateStr = JSON.stringify(state, null, 2);
 
-    return new Response(stateStr, {
-      status: 200,
-    });
+    if (game.selectedPiece == null || game.selectedPiece === upperCoord) {
+      game.select(upperCoord);
+    } else {
+      game.move(upperCoord);
+    }
+
+    const redirectUrl = request.headers.get("referer") || "/";
+
+    return redirect(redirectUrl);
   } catch (error) {
     console.error(error);
 

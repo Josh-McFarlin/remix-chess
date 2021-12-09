@@ -5,6 +5,9 @@ var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
+var __commonJS = (cb, mod) => function __require() {
+  return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+};
 var __export = (target, all) => {
   __markAsModule(target);
   for (var name in all)
@@ -39,6 +42,125 @@ var __privateSet = (obj, member, value, setter) => {
   setter ? setter.call(obj, value) : member.set(obj, value);
   return value;
 };
+
+// src/assets/chess/w_pawn.png
+var require_w_pawn = __commonJS({
+  "src/assets/chess/w_pawn.png"(exports, module2) {
+    module2.exports = "/build/_assets/w_pawn-WB7CVCLY.png";
+  }
+});
+
+// src/assets/chess/w_knight.png
+var require_w_knight = __commonJS({
+  "src/assets/chess/w_knight.png"(exports, module2) {
+    module2.exports = "/build/_assets/w_knight-UZ7SJ7ZQ.png";
+  }
+});
+
+// src/assets/chess/w_bishop.png
+var require_w_bishop = __commonJS({
+  "src/assets/chess/w_bishop.png"(exports, module2) {
+    module2.exports = "/build/_assets/w_bishop-5BEXPIXS.png";
+  }
+});
+
+// src/assets/chess/w_rook.png
+var require_w_rook = __commonJS({
+  "src/assets/chess/w_rook.png"(exports, module2) {
+    module2.exports = "/build/_assets/w_rook-VN6NIIGS.png";
+  }
+});
+
+// src/assets/chess/w_queen.png
+var require_w_queen = __commonJS({
+  "src/assets/chess/w_queen.png"(exports, module2) {
+    module2.exports = "/build/_assets/w_queen-YBBFN5CP.png";
+  }
+});
+
+// src/assets/chess/w_king.png
+var require_w_king = __commonJS({
+  "src/assets/chess/w_king.png"(exports, module2) {
+    module2.exports = "/build/_assets/w_king-BSXT3QH6.png";
+  }
+});
+
+// src/assets/chess/b_pawn.png
+var require_b_pawn = __commonJS({
+  "src/assets/chess/b_pawn.png"(exports, module2) {
+    module2.exports = "/build/_assets/b_pawn-OESP3Z2A.png";
+  }
+});
+
+// src/assets/chess/b_knight.png
+var require_b_knight = __commonJS({
+  "src/assets/chess/b_knight.png"(exports, module2) {
+    module2.exports = "/build/_assets/b_knight-JEOXEIP5.png";
+  }
+});
+
+// src/assets/chess/b_bishop.png
+var require_b_bishop = __commonJS({
+  "src/assets/chess/b_bishop.png"(exports, module2) {
+    module2.exports = "/build/_assets/b_bishop-FEQCK7QQ.png";
+  }
+});
+
+// src/assets/chess/b_rook.png
+var require_b_rook = __commonJS({
+  "src/assets/chess/b_rook.png"(exports, module2) {
+    module2.exports = "/build/_assets/b_rook-JHEPAWSG.png";
+  }
+});
+
+// src/assets/chess/b_queen.png
+var require_b_queen = __commonJS({
+  "src/assets/chess/b_queen.png"(exports, module2) {
+    module2.exports = "/build/_assets/b_queen-XYBGVE7Y.png";
+  }
+});
+
+// src/assets/chess/b_king.png
+var require_b_king = __commonJS({
+  "src/assets/chess/b_king.png"(exports, module2) {
+    module2.exports = "/build/_assets/b_king-OTCXGPD6.png";
+  }
+});
+
+// src/assets/chess/square_brown_light.png
+var require_square_brown_light = __commonJS({
+  "src/assets/chess/square_brown_light.png"(exports, module2) {
+    module2.exports = "/build/_assets/square_brown_light-TZG562AV.png";
+  }
+});
+
+// src/assets/chess/square_brown_dark.png
+var require_square_brown_dark = __commonJS({
+  "src/assets/chess/square_brown_dark.png"(exports, module2) {
+    module2.exports = "/build/_assets/square_brown_dark-2MS77WIE.png";
+  }
+});
+
+// src/assets/chess/blue_glow.png
+var require_blue_glow = __commonJS({
+  "src/assets/chess/blue_glow.png"(exports, module2) {
+    module2.exports = "/build/_assets/blue_glow-IPWFVN65.png";
+  }
+});
+
+// src/assets/chess/green_glow.png
+var require_green_glow = __commonJS({
+  "src/assets/chess/green_glow.png"(exports, module2) {
+    module2.exports = "/build/_assets/green_glow-KNFHEX4H.png";
+  }
+});
+
+// src/assets/chess/exclamation_mark.png
+var require_exclamation_mark = __commonJS({
+  "src/assets/chess/exclamation_mark.png"(exports, module2) {
+    module2.exports = "/build/_assets/exclamation_mark-BX5D6GRH.png";
+  }
+});
 
 // <stdin>
 __export(exports, {
@@ -96,31 +218,6 @@ var links = () => {
     }
   ];
 };
-function RemixLogo() {
-  return /* @__PURE__ */ React.createElement("svg", {
-    viewBox: "0 0 659 165",
-    version: "1.1",
-    xmlns: "http://www.w3.org/2000/svg",
-    xmlnsXlink: "http://www.w3.org/1999/xlink",
-    "aria-labelledby": "remix-run-logo-title",
-    role: "img",
-    width: "106",
-    height: "30",
-    fill: "currentColor"
-  }, /* @__PURE__ */ React.createElement("title", {
-    id: "remix-run-logo-title"
-  }, "Remix Logo"), /* @__PURE__ */ React.createElement("path", {
-    d: "M0 161V136H45.5416C53.1486 136 54.8003 141.638 54.8003 145V161H0Z M133.85 124.16C135.3 142.762 135.3 151.482 135.3 161H92.2283C92.2283 158.927 92.2653 157.03 92.3028 155.107C92.4195 149.128 92.5411 142.894 91.5717 130.304C90.2905 111.872 82.3473 107.776 67.7419 107.776H54.8021H0V74.24H69.7918C88.2407 74.24 97.4651 68.632 97.4651 53.784C97.4651 40.728 88.2407 32.816 69.7918 32.816H0V0H77.4788C119.245 0 140 19.712 140 51.2C140 74.752 125.395 90.112 105.665 92.672C122.32 96 132.057 105.472 133.85 124.16Z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M229.43 120.576C225.59 129.536 218.422 133.376 207.158 133.376C194.614 133.376 184.374 126.72 183.35 112.64H263.478V101.12C263.478 70.1437 243.254 44.0317 205.11 44.0317C169.526 44.0317 142.902 69.8877 142.902 105.984C142.902 142.336 169.014 164.352 205.622 164.352C235.83 164.352 256.822 149.76 262.71 123.648L229.43 120.576ZM183.862 92.6717C185.398 81.9197 191.286 73.7277 204.598 73.7277C216.886 73.7277 223.542 82.4317 224.054 92.6717H183.862Z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M385.256 66.5597C380.392 53.2477 369.896 44.0317 349.672 44.0317C332.52 44.0317 320.232 51.7117 314.088 64.2557V47.1037H272.616V161.28H314.088V105.216C314.088 88.0638 318.952 76.7997 332.52 76.7997C345.064 76.7997 348.136 84.9917 348.136 100.608V161.28H389.608V105.216C389.608 88.0638 394.216 76.7997 408.04 76.7997C420.584 76.7997 423.4 84.9917 423.4 100.608V161.28H464.872V89.5997C464.872 65.7917 455.656 44.0317 424.168 44.0317C404.968 44.0317 391.4 53.7597 385.256 66.5597Z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M478.436 47.104V161.28H519.908V47.104H478.436ZM478.18 36.352H520.164V0H478.18V36.352Z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M654.54 47.1035H611.788L592.332 74.2395L573.388 47.1035H527.564L568.78 103.168L523.98 161.28H566.732L589.516 130.304L612.3 161.28H658.124L613.068 101.376L654.54 47.1035Z"
-  }));
-}
 function Document({
   children,
   title
@@ -134,44 +231,14 @@ function Document({
     content: "width=device-width,initial-scale=1"
   }), title ? /* @__PURE__ */ React.createElement("title", null, title) : null, /* @__PURE__ */ React.createElement(import_remix2.Meta, null), /* @__PURE__ */ React.createElement(import_remix2.Links, null)), /* @__PURE__ */ React.createElement("body", null, children, /* @__PURE__ */ React.createElement(import_remix2.ScrollRestoration, null), /* @__PURE__ */ React.createElement(import_remix2.Scripts, null), process.env.NODE_ENV === "development" && /* @__PURE__ */ React.createElement(import_remix2.LiveReload, null)));
 }
-function Layout({ children }) {
-  return /* @__PURE__ */ React.createElement("div", {
-    className: "remix-app"
-  }, /* @__PURE__ */ React.createElement("header", {
-    className: "remix-app__header"
-  }, /* @__PURE__ */ React.createElement("div", {
-    className: "container remix-app__header-content"
-  }, /* @__PURE__ */ React.createElement(import_remix2.Link, {
-    to: "/",
-    title: "Remix",
-    className: "remix-app__header-home-link"
-  }, /* @__PURE__ */ React.createElement(RemixLogo, null)), /* @__PURE__ */ React.createElement("nav", {
-    "aria-label": "Main navigation",
-    className: "remix-app__header-nav"
-  }, /* @__PURE__ */ React.createElement("ul", null, /* @__PURE__ */ React.createElement("li", null, /* @__PURE__ */ React.createElement(import_remix2.Link, {
-    to: "/"
-  }, "Home")), /* @__PURE__ */ React.createElement("li", null, /* @__PURE__ */ React.createElement("a", {
-    href: "https://remix.run/docs"
-  }, "Remix Docs")), /* @__PURE__ */ React.createElement("li", null, /* @__PURE__ */ React.createElement("a", {
-    href: "https://github.com/remix-run/remix"
-  }, "GitHub")))))), /* @__PURE__ */ React.createElement("div", {
-    className: "remix-app__main"
-  }, /* @__PURE__ */ React.createElement("div", {
-    className: "container remix-app__main-content"
-  }, children)), /* @__PURE__ */ React.createElement("footer", {
-    className: "remix-app__footer"
-  }, /* @__PURE__ */ React.createElement("div", {
-    className: "container remix-app__footer-content"
-  }, /* @__PURE__ */ React.createElement("p", null, "\xA9 You!"))));
-}
 function App() {
-  return /* @__PURE__ */ React.createElement(Document, null, /* @__PURE__ */ React.createElement(Layout, null, /* @__PURE__ */ React.createElement(import_remix2.Outlet, null)));
+  return /* @__PURE__ */ React.createElement(Document, null, /* @__PURE__ */ React.createElement(import_remix2.Outlet, null));
 }
 function ErrorBoundary({ error }) {
   console.error(error);
   return /* @__PURE__ */ React.createElement(Document, {
     title: "Error!"
-  }, /* @__PURE__ */ React.createElement(Layout, null, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h1", null, "There was an error"), /* @__PURE__ */ React.createElement("p", null, error.message), /* @__PURE__ */ React.createElement("hr", null), /* @__PURE__ */ React.createElement("p", null, "Hey, developer, you should replace this with what you want your users to see."))));
+  }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h1", null, "There was an error"), /* @__PURE__ */ React.createElement("p", null, error.message)));
 }
 function CatchBoundary() {
   const caught = (0, import_remix2.useCatch)();
@@ -188,7 +255,7 @@ function CatchBoundary() {
   }
   return /* @__PURE__ */ React.createElement(Document, {
     title: `${caught.status} ${caught.statusText}`
-  }, /* @__PURE__ */ React.createElement(Layout, null, /* @__PURE__ */ React.createElement("h1", null, caught.status, ": ", caught.statusText), message));
+  }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h1", null, caught.status, ": ", caught.statusText), message));
 }
 
 // route-module:/Users/joshmcfarlin/Code/Web/remix-chess/src/routes/piece/$coordinate.ts
@@ -202,24 +269,26 @@ var import_js_chess_engine = __toModule(require("js-chess-engine"));
 var import_flat_cache = __toModule(require("flat-cache"));
 var import_merge_images = __toModule(require("merge-images"));
 var import_canvas = __toModule(require("canvas"));
-var imagePath = "../assets/chess";
+var import_path = __toModule(require("path"));
 var piecesToImages = {
-  P: "w_pawn.png",
-  N: "w_knight.png",
-  B: "w_bishop.png",
-  R: "w_rook.png",
-  Q: "w_queen.png",
-  K: "w_king.png",
-  p: "b_pawn.png",
-  n: "b_knight.png",
-  b: "b_bishop.png",
-  r: "b_rook.png",
-  q: "b_queen.png",
-  k: "b_king.png"
+  P: require_w_pawn(),
+  N: require_w_knight(),
+  B: require_w_bishop(),
+  R: require_w_rook(),
+  Q: require_w_queen(),
+  K: require_w_king(),
+  p: require_b_pawn(),
+  n: require_b_knight(),
+  b: require_b_bishop(),
+  r: require_b_rook(),
+  q: require_b_queen(),
+  k: require_b_king()
 };
-var lightSquare = "square_brown_light.png";
-var darkSquare = "square_brown_dark.png";
-var pendingMove = "blue_glow.png";
+var lightSquare = require_square_brown_light();
+var darkSquare = require_square_brown_dark();
+var pendingMove = require_blue_glow();
+var possiblePos = require_green_glow();
+var errorIcon = require_exclamation_mark();
 var aiLevel = 1;
 var gameKey = "GAME";
 var selKey = "SELECTED";
@@ -234,13 +303,17 @@ var Game = class {
     if (storedGame != null) {
       __privateSet(this, _game, new import_js_chess_engine.default.Game(storedGame));
       this.selectedPiece = __privateGet(this, _cache).getKey(selKey) || null;
+      if (__privateGet(this, _game).exportJson().isFinished) {
+        __privateSet(this, _game, new import_js_chess_engine.default.Game());
+        this.selectedPiece = null;
+      }
     } else {
       __privateSet(this, _game, new import_js_chess_engine.default.Game());
       this.selectedPiece = null;
     }
   }
   select(coordinate) {
-    this.selectedPiece = coordinate;
+    this.selectedPiece = coordinate !== this.selectedPiece ? coordinate : null;
     const json = __privateGet(this, _game).exportJson();
     __privateGet(this, _cache).setKey(gameKey, json);
     __privateGet(this, _cache).setKey(selKey, this.selectedPiece);
@@ -251,14 +324,18 @@ var Game = class {
     if (this.selectedPiece == null) {
       throw new Error("Please select a game piece first!");
     }
-    __privateGet(this, _game).move(this.selectedPiece, to);
-    __privateGet(this, _game).aiMove(aiLevel);
-    const json = __privateGet(this, _game).exportJson();
-    __privateGet(this, _cache).setKey(gameKey, json);
-    this.selectedPiece = null;
-    __privateGet(this, _cache).setKey(selKey, null);
-    __privateGet(this, _cache).save();
-    return __privateGet(this, _game).exportJson();
+    try {
+      __privateGet(this, _game).move(this.selectedPiece, to);
+      __privateGet(this, _game).aiMove(aiLevel);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      const json = __privateGet(this, _game).exportJson();
+      __privateGet(this, _cache).setKey(gameKey, json);
+      this.selectedPiece = null;
+      __privateGet(this, _cache).setKey(selKey, null);
+      __privateGet(this, _cache).save();
+    }
   }
   state() {
     return __privateGet(this, _game).exportJson();
@@ -277,6 +354,8 @@ var loadGame = (gameId) => {
     const game = loadedGames.get(gameId);
     if (game == null) {
       return createGame(gameId);
+    } else if (game.state().isFinished) {
+      return createGame(gameId);
     }
     return game;
   } else {
@@ -289,25 +368,37 @@ var isSquareLight = (coordinate) => {
   return (ascii + num) % 2 !== 0;
 };
 var getGamePiece = async (gameId, coordinate) => {
-  if (!gameId || !coordinate) {
-    throw new Error("Invalid parameters!");
+  try {
+    if (!gameId || !coordinate) {
+      throw new Error("Invalid parameters!");
+    }
+    const game = loadGame(gameId);
+    const images = [
+      isSquareLight(coordinate) ? lightSquare : darkSquare
+    ];
+    const { pieces } = game.state();
+    if (Object.prototype.hasOwnProperty.call(pieces, coordinate)) {
+      images.push(piecesToImages[pieces[coordinate]]);
+    }
+    if (game.selectedPiece === coordinate) {
+      images.push(pendingMove);
+    }
+    if (game.selectedPiece != null && Object.prototype.hasOwnProperty.call(game.state().moves, game.selectedPiece) && game.state().moves[game.selectedPiece].includes(coordinate)) {
+      images.push(possiblePos);
+    }
+    return (0, import_merge_images.default)(images.map((i) => import_path.default.resolve(import_path.default.join(__dirname, "..", i))), {
+      Canvas: import_canvas.Canvas,
+      Image: import_canvas.Image
+    });
+  } catch (error) {
+    console.error(error);
+    return (0, import_merge_images.default)([import_path.default.resolve(import_path.default.join(__dirname, "..", errorIcon)), "base64"], {
+      width: 75,
+      height: 75,
+      Canvas: import_canvas.Canvas,
+      Image: import_canvas.Image
+    });
   }
-  const game = loadGame(gameId);
-  const images = [
-    isSquareLight(coordinate) ? lightSquare : darkSquare
-  ];
-  const { pieces } = game.state();
-  if (Object.prototype.hasOwnProperty.call(pieces, coordinate)) {
-    images.push(piecesToImages[pieces[coordinate]]);
-  }
-  if (game.selectedPiece === coordinate) {
-    images.push(pendingMove);
-  }
-  console.log("images", images);
-  return (0, import_merge_images.default)(images.map((i) => imagePath + "/" + i), {
-    Canvas: import_canvas.Canvas,
-    Image: import_canvas.Image
-  });
 };
 
 // route-module:/Users/joshmcfarlin/Code/Web/remix-chess/src/routes/piece/$coordinate.ts
@@ -317,28 +408,19 @@ var loader = async ({
 }) => {
   const gameId = request.headers.get("x-forwarded-for") || "GENERAL";
   const { coordinate } = params;
-  if (!gameId || !coordinate) {
-    return new Response("Please provide all parameters!", {
-      status: 500
-    });
-  }
-  try {
-    const upperCoord = coordinate.toUpperCase();
-    const piece = await getGamePiece(gameId, upperCoord);
-    const img = Buffer.from(piece, "base64");
-    return new Response(img, {
-      status: 200,
-      headers: {
-        "Content-Type": "image/png",
-        "Content-Length": img.length.toString()
-      }
-    });
-  } catch (error) {
-    console.error(error);
-    return new Response("Failed!", {
-      status: 500
-    });
-  }
+  const upperCoord = (coordinate || "").toUpperCase();
+  const piece = await getGamePiece(gameId, upperCoord);
+  const img = Buffer.from(piece.replace(/^data:image\/\w+;base64,/, ""), "base64");
+  return new Response(img, {
+    status: 200,
+    headers: {
+      "Content-Type": "image/png",
+      "Content-Length": img.length.toString(),
+      "Cache-Control": "private, no-cache, no-store, must-revalidate",
+      Expires: "-1",
+      Pragma: "no-cache"
+    }
+  });
 };
 
 // route-module:/Users/joshmcfarlin/Code/Web/remix-chess/src/routes/move/$coordinate.ts
@@ -346,6 +428,7 @@ var coordinate_exports2 = {};
 __export(coordinate_exports2, {
   loader: () => loader2
 });
+var import_remix3 = __toModule(require("remix"));
 var loader2 = async ({
   params,
   request
@@ -360,11 +443,13 @@ var loader2 = async ({
   try {
     const upperCoord = coordinate.toUpperCase();
     const game = loadGame(gameId);
-    const state = game.selectedPiece == null ? game.select(upperCoord) : game.move(upperCoord);
-    const stateStr = JSON.stringify(state, null, 2);
-    return new Response(stateStr, {
-      status: 200
-    });
+    if (game.selectedPiece == null || game.selectedPiece === upperCoord) {
+      game.select(upperCoord);
+    } else {
+      game.move(upperCoord);
+    }
+    const redirectUrl = request.headers.get("referer") || "/";
+    return (0, import_remix3.redirect)(redirectUrl);
   } catch (error) {
     console.error(error);
     return new Response("Failed!", {

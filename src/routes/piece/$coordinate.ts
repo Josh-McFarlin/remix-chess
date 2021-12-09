@@ -11,30 +11,23 @@ export const loader: LoaderFunction = async ({
   const gameId = request.headers.get("x-forwarded-for") || "GENERAL";
   const { coordinate } = params;
 
-  if (!gameId || !coordinate) {
-    return new Response("Please provide all parameters!", {
-      status: 500,
-    });
-  }
+  const upperCoord = (coordinate || "").toUpperCase();
 
-  try {
-    const upperCoord = coordinate.toUpperCase();
+  const piece = await getGamePiece(gameId, upperCoord);
 
-    const piece = await getGamePiece(gameId, upperCoord);
-    const img = Buffer.from(piece, "base64");
+  const img = Buffer.from(
+    piece.replace(/^data:image\/\w+;base64,/, ""),
+    "base64"
+  );
 
-    return new Response(img, {
-      status: 200,
-      headers: {
-        "Content-Type": "image/png",
-        "Content-Length": img.length.toString(),
-      },
-    });
-  } catch (error) {
-    console.error(error);
-
-    return new Response("Failed!", {
-      status: 500,
-    });
-  }
+  return new Response(img, {
+    status: 200,
+    headers: {
+      "Content-Type": "image/png",
+      "Content-Length": img.length.toString(),
+      "Cache-Control": "private, no-cache, no-store, must-revalidate",
+      Expires: "-1",
+      Pragma: "no-cache",
+    },
+  });
 };

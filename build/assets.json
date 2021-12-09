@@ -1,18 +1,18 @@
 {
-  "version": "532e8a32",
+  "version": "e62ac34e",
   "entry": {
-    "module": "/build/entry.client-2NCCGWH7.js",
+    "module": "/build/entry.client-LFLX62UE.js",
     "imports": [
-      "/build/_shared/chunk-DEW2T3GW.js",
-      "/build/_shared/chunk-YE6DVG5Y.js",
-      "/build/_shared/chunk-CW6AOW5M.js"
+      "/build/_shared/chunk-C353FHG3.js",
+      "/build/_shared/chunk-G2MVBFIX.js",
+      "/build/_shared/chunk-N2OTFKWF.js"
     ]
   },
   "routes": {
     "root": {
       "id": "root",
       "path": "",
-      "module": "/build/root-7U4LICBD.js",
+      "module": "/build/root-5QWZXOVN.js",
       "hasAction": false,
       "hasLoader": false,
       "hasCatchBoundary": true,
@@ -22,7 +22,7 @@
       "id": "routes/index",
       "parentId": "root",
       "index": true,
-      "module": "/build/routes/index-PV3IOSAG.js",
+      "module": "/build/routes/index-2WELRICV.js",
       "hasAction": false,
       "hasLoader": false,
       "hasCatchBoundary": false,
@@ -32,9 +32,9 @@
       "id": "routes/move/$coordinate",
       "parentId": "root",
       "path": "move/:coordinate",
-      "module": "/build/routes/move/$coordinate-CEMWZ25F.js",
+      "module": "/build/routes/move/$coordinate-WXALISDM.js",
       "imports": [
-        "/build/_shared/chunk-H54OWMFA.js"
+        "/build/_shared/chunk-FL7KHF2S.js"
       ],
       "hasAction": false,
       "hasLoader": true,
@@ -45,25 +45,15 @@
       "id": "routes/piece/$coordinate",
       "parentId": "root",
       "path": "piece/:coordinate",
-      "module": "/build/routes/piece/$coordinate-EJNXUSE3.js",
+      "module": "/build/routes/piece/$coordinate-AJCK7QH6.js",
       "imports": [
-        "/build/_shared/chunk-H54OWMFA.js"
+        "/build/_shared/chunk-FL7KHF2S.js"
       ],
-      "hasAction": false,
-      "hasLoader": true,
-      "hasCatchBoundary": false,
-      "hasErrorBoundary": false
-    },
-    "routes/test-fly": {
-      "id": "routes/test-fly",
-      "parentId": "root",
-      "path": "test-fly",
-      "module": "/build/routes/test-fly-QHLXI4GS.js",
       "hasAction": false,
       "hasLoader": true,
       "hasCatchBoundary": false,
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-532E8A32.js"
+  "url": "/build/manifest-E62AC34E.js"
 }

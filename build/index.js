@@ -298,16 +298,21 @@ var Game = class {
     __privateAdd(this, _cache, void 0);
     __privateAdd(this, _game, void 0);
     this.gameId = gameId;
-    __privateSet(this, _cache, import_flat_cache.default.load(gameId, import_path.default.resolve("./data")));
-    const storedGame = __privateGet(this, _cache).getKey(gameKey);
-    if (storedGame != null) {
-      __privateSet(this, _game, new import_js_chess_engine.default.Game(storedGame));
-      this.selectedPiece = __privateGet(this, _cache).getKey(selKey) || null;
-      if (__privateGet(this, _game).exportJson().isFinished) {
+    __privateSet(this, _cache, import_flat_cache.default.load(gameId, import_path.default.resolve("/data")));
+    try {
+      const storedGame = __privateGet(this, _cache).getKey(gameKey);
+      if (storedGame != null) {
+        __privateSet(this, _game, new import_js_chess_engine.default.Game(storedGame));
+        this.selectedPiece = __privateGet(this, _cache).getKey(selKey) || null;
+        if (__privateGet(this, _game).exportJson().isFinished) {
+          __privateSet(this, _game, new import_js_chess_engine.default.Game());
+          this.selectedPiece = null;
+        }
+      } else {
         __privateSet(this, _game, new import_js_chess_engine.default.Game());
         this.selectedPiece = null;
       }
-    } else {
+    } catch (error) {
       __privateSet(this, _game, new import_js_chess_engine.default.Game());
       this.selectedPiece = null;
     }
@@ -393,8 +398,6 @@ var getGamePiece = async (gameId, coordinate) => {
   } catch (error) {
     console.error(error);
     return (0, import_merge_images.default)([import_path.default.resolve(import_path.default.join(__dirname, "..", errorIcon)), "base64"], {
-      width: 75,
-      height: 75,
       Canvas: import_canvas.Canvas,
       Image: import_canvas.Image
     });
@@ -406,7 +409,7 @@ var loader = async ({
   params,
   request
 }) => {
-  const gameId = request.headers.get("x-forwarded-for") || "GENERAL";
+  const gameId = request.headers.get("Fly-Client-IP") || "GENERAL";
   const { coordinate } = params;
   const upperCoord = (coordinate || "").toUpperCase();
   const piece = await getGamePiece(gameId, upperCoord);
@@ -433,7 +436,7 @@ var loader2 = async ({
   params,
   request
 }) => {
-  const gameId = request.headers.get("x-forwarded-for") || "GENERAL";
+  const gameId = request.headers.get("Fly-Client-IP") || "GENERAL";
   const { coordinate } = params;
   if (!gameId || !coordinate) {
     return new Response("Please provide all parameters!", {
@@ -448,53 +451,8 @@ var loader2 = async ({
     } else {
       game.move(upperCoord);
     }
-    const redirectUrl = request.headers.get("referer") || "/";
+    const redirectUrl = request.headers.get("referer") || "https://github.com/Josh-McFarlin";
     return (0, import_remix3.redirect)(redirectUrl);
-  } catch (error) {
-    console.error(error);
-    return new Response("Failed!", {
-      status: 500
-    });
-  }
-};
-
-// route-module:/Users/joshmcfarlin/Code/Web/remix-chess/src/routes/test-fly.ts
-var test_fly_exports = {};
-__export(test_fly_exports, {
-  loader: () => loader3
-});
-var import_path2 = __toModule(require("path"));
-var import_fs = __toModule(require("fs"));
-var loader3 = async ({
-  request
-}) => {
-  try {
-    console.log("Fly-Client-IP", request.headers.get("Fly-Client-IP"));
-    console.log("Fly-Client-IP", request.headers.get("referer"));
-    try {
-      const pathName = import_path2.default.resolve(__dirname, "data");
-      const contents = import_fs.default.readdirSync(pathName, { withFileTypes: true });
-      console.log(pathName, JSON.stringify(contents.map((c) => c.name), null, 2));
-    } catch (error) {
-      console.error((error == null ? void 0 : error.message) || error);
-    }
-    try {
-      const pathName = import_path2.default.resolve(__dirname, "..", "data");
-      const contents = import_fs.default.readdirSync(pathName, { withFileTypes: true });
-      console.log(pathName, JSON.stringify(contents.map((c) => c.name), null, 2));
-    } catch (error) {
-      console.error((error == null ? void 0 : error.message) || error);
-    }
-    try {
-      const pathName = "/data";
-      const contents = import_fs.default.readdirSync(pathName, { withFileTypes: true });
-      console.log(pathName, JSON.stringify(contents.map((c) => c.name), null, 2));
-    } catch (error) {
-      console.error((error == null ? void 0 : error.message) || error);
-    }
-    return new Response("Check logs!", {
-      status: 200
-    });
   } catch (error) {
     console.error(error);
     return new Response("Failed!", {
@@ -511,7 +469,7 @@ __export(routes_exports, {
 });
 var import_react = __toModule(require("react"));
 var letters = ["A", "B", "C", "D", "E", "F", "G", "H"];
-var nums = [1, 2, 3, 4, 5, 6, 7, 8];
+var nums = [8, 7, 6, 5, 4, 3, 2, 1];
 var meta = () => {
   return {
     title: "Remix Chess",
@@ -521,7 +479,7 @@ var meta = () => {
 var IndexRoute = () => {
   return /* @__PURE__ */ import_react.default.createElement("div", {
     className: "remix__page"
-  }, /* @__PURE__ */ import_react.default.createElement("main", null, nums.reverse().map((number) => /* @__PURE__ */ import_react.default.createElement("div", {
+  }, /* @__PURE__ */ import_react.default.createElement("main", null, nums.map((number) => /* @__PURE__ */ import_react.default.createElement("div", {
     key: number
   }, letters.map((letter) => /* @__PURE__ */ import_react.default.createElement("a", {
     key: number + letter,
@@ -560,14 +518,6 @@ var routes = {
     index: void 0,
     caseSensitive: void 0,
     module: coordinate_exports2
-  },
-  "routes/test-fly": {
-    id: "routes/test-fly",
-    parentId: "root",
-    path: "test-fly",
-    index: void 0,
-    caseSensitive: void 0,
-    module: test_fly_exports
   },
   "routes/index": {
     id: "routes/index",

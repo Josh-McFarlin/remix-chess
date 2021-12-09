@@ -29,9 +29,7 @@ export const loader: LoaderFunction = async ({
     headers: {
       "Content-Type": "image/png",
       "Content-Length": img.length.toString(),
-      "Cache-Control": "private, no-cache, no-store, must-revalidate",
-      Expires: "-1",
-      Pragma: "no-cache",
+      "Cache-Control": "max-age=5",
     },
   });
 };

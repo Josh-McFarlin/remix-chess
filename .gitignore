@@ -278,3 +278,6 @@ node_modules
 .eslintcache
 
 /build
+
+/public/chess/**
+

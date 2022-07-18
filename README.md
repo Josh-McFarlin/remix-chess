@@ -15,6 +15,8 @@ You are the white piece. Click a piece to select it and it will turn blue. The g
 | 2   | [![A2](https://remix-chess.fly.dev/piece/A2)](https://remix-chess.fly.dev/move/A2) | [![B2](https://remix-chess.fly.dev/piece/B2)](https://remix-chess.fly.dev/move/B2) | [![C2](https://remix-chess.fly.dev/piece/C2)](https://remix-chess.fly.dev/move/C2) | [![D2](https://remix-chess.fly.dev/piece/D2)](https://remix-chess.fly.dev/move/D2) | [![E2](https://remix-chess.fly.dev/piece/E2)](https://remix-chess.fly.dev/move/E2) | [![F2](https://remix-chess.fly.dev/piece/F2)](https://remix-chess.fly.dev/move/F2) | [![G2](https://remix-chess.fly.dev/piece/G2)](https://remix-chess.fly.dev/move/G2) | [![H2](https://remix-chess.fly.dev/piece/H2)](https://remix-chess.fly.dev/move/H2) |
 | 1   | [![A1](https://remix-chess.fly.dev/piece/A1)](https://remix-chess.fly.dev/move/A1) | [![B1](https://remix-chess.fly.dev/piece/B1)](https://remix-chess.fly.dev/move/B1) | [![C1](https://remix-chess.fly.dev/piece/C1)](https://remix-chess.fly.dev/move/C1) | [![D1](https://remix-chess.fly.dev/piece/D1)](https://remix-chess.fly.dev/move/D1) | [![E1](https://remix-chess.fly.dev/piece/E1)](https://remix-chess.fly.dev/move/E1) | [![F1](https://remix-chess.fly.dev/piece/F1)](https://remix-chess.fly.dev/move/F1) | [![G1](https://remix-chess.fly.dev/piece/G1)](https://remix-chess.fly.dev/move/G1) | [![H1](https://remix-chess.fly.dev/piece/H1)](https://remix-chess.fly.dev/move/H1) |
 
+![Game Stats](https://remix-chess.fly.dev/stats)
+
 ## Running
 
 - The instructions for setting up fly are below.

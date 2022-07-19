@@ -1,8 +1,9 @@
 declare module "js-chess-engine" {
   /**
-   * {"H7":"H5"}
+   * H7
    */
-  export type Move = Record<string, string>;
+  export type Coordinate = string;
+  export type Move = { [from: Coordinate]: Coordinate };
 
   export type WhitePiece = "P" | "N" | "B" | "R" | "Q" | "K";
   export type BlackPiece = "p" | "n" | "b" | "r" | "q" | "k";
@@ -10,8 +11,8 @@ declare module "js-chess-engine" {
 
   export type GameConfig = {
     turn: "white" | "black";
-    pieces: Record<string, Piece>;
-    moves: Record<string, string[]>;
+    pieces: Record<Coordinate, Piece>;
+    moves: Record<Coordinate, Coordinate[]>;
     isFinished: boolean;
     check: boolean;
     checkMate: boolean;
@@ -27,6 +28,10 @@ declare module "js-chess-engine" {
   };
 
   export class Game {
+    board: {
+      configuration: GameConfig;
+    };
+
     /**
      * Create a new game, init players and in-game situation.
      * @param configuration Is a chess board configuration. Default value is a configuration for new game.
@@ -38,26 +43,26 @@ declare module "js-chess-engine" {
      * @param from Location on a chessboard where move starts (like A1,B3,...)
      * @param to Location on a chessboard where move ends (like A1,B3,...)
      */
-    move(from: string, to: string): Move;
+    move(from: Coordinate, to: Coordinate): Move;
 
     /**
      * Return possible moves for playing player.
      * @param from Location on a chessboard where move starts (like A1,B3,...)
      */
-    moves(from: string): Move[];
+    moves(from: Coordinate): Coordinate[];
 
     /**
      * New chess piece is added to provided location. Piece on provided location is replaced.
      * @param location Location on a chessboard (like A1,B3,...).
      * @param piece A chess piece you need add (pieces syntax is same as FEN notation).
      */
-    setPiece(location: string, piece: string): void;
+    setPiece(location: Coordinate, piece: Piece): void;
 
     /**
      * Remove piece on provided location.
      * @param location Location on a chessboard (like A1,B3,...).
      */
-    removePiece(location: string): void;
+    removePiece(location: Coordinate): void;
 
     /**
      * Calculates and perform next move by computer player. game.move(from, to) is called internally. Returns played move
@@ -69,7 +74,11 @@ declare module "js-chess-engine" {
      * Returns all played moves in array with chess board configuration like [{from:'A2',to:'A3',configuration:{...}},{from:'A7',to:'A6',configuration:{...}}].
      * @param reversed When false, last move is the last element in returned array. When true, last move is first. Default false.
      */
-    getHistory(reversed?: boolean): Move[];
+    getHistory(reversed?: boolean): {
+      from: Coordinate;
+      to: Coordinate;
+      configuration: GameConfig;
+    }[];
 
     /**
      * Print a chessboard to console standard output.

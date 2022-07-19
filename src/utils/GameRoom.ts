@@ -25,10 +25,6 @@ class GameRoom {
       game = new Game(gameId);
     }
 
-    if (game.isFinished) {
-      game.restart();
-    }
-
     loadedGames.set(gameId, game);
     return game;
   }

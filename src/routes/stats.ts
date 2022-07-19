@@ -3,38 +3,17 @@
  */
 import type { LoaderFunction } from "@remix-run/node";
 import { gameRoom } from "~/utils/GameRoom";
-import type { OverlayOptions } from "sharp";
+
 import sharp from "sharp";
-import TextToSVG from "text-to-svg";
-const textToSVG = TextToSVG.loadSync();
 
-const makeTextSvg = (text: string, fontSize: number): string =>
-  textToSVG.getSVG(text, {
-    x: 0,
-    y: 0,
-    fontSize,
-    anchor: "left top",
-    attributes: {
-      fill: "white",
-      stroke: "white",
-    },
-  });
-
-const makeText = (...textRows: string[]): OverlayOptions[] =>
-  textRows.map((text, index) => ({
-    input: Buffer.from(makeTextSvg(text, 24)),
-    gravity: "northwest",
-    left: 8,
-    top: (24 + 8) * index + 8,
-  }));
+import { isFromGithub } from "~/utils/http";
+import { makeText } from "~/utils/image";
 
 export const loader: LoaderFunction = async ({
   request,
 }): Promise<Response> => {
   // GitHub disables this functionality, so serve GENERAL game on GitHub
-  const isGithub =
-    request.headers.get("referer") != null &&
-    request.headers.get("referer")!.includes("github.com");
+  const isGithub = isFromGithub(request);
   const gameId = isGithub
     ? "GENERAL"
     : request.headers.get("Fly-Client-IP") || "GENERAL";
@@ -50,7 +29,7 @@ export const loader: LoaderFunction = async ({
 
     const statsImage = await sharp({
       create: {
-        width: 260,
+        width: 280,
         height: 168,
         channels: 4,
         background: { r: 124, g: 76, b: 62, alpha: 1 },
@@ -74,10 +53,12 @@ export const loader: LoaderFunction = async ({
     return new Response(statsImage, {
       status: 200,
       headers: {
-        "Content-Type": "image/png",
+        "Content-Type": "image/jpeg",
         "Content-Length": statsImage.length.toString(),
         "Cache-Control": "private, no-cache, no-store, must-revalidate",
         Expires: "-1",
+        "Last-Modified": "Mon, 01 Jan 2999 00:00:00 GMT",
+        Etag: Date.now().toString(),
         Pragma: "no-cache",
       },
     });

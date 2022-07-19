@@ -2,9 +2,11 @@
  * The API route to serve the image asset
  */
 import type { LoaderFunction } from "@remix-run/node";
-import { redirect } from "@remix-run/node";
 import { gameRoom } from "~/utils/GameRoom";
 import type Game from "~/utils/Game";
+import { isFromGithub } from "~/utils/http";
+import fs from "fs";
+import path from "path";
 
 const isSquareLight = (coordinate: string): boolean => {
   const ascii = coordinate.charCodeAt(0);
@@ -14,7 +16,7 @@ const isSquareLight = (coordinate: string): boolean => {
 };
 
 const getGamePiece = (game: Game, coordinate: string): string => {
-  let key = "/chess/";
+  let key = "";
 
   if (isSquareLight(coordinate)) {
     key += "light";
@@ -22,17 +24,20 @@ const getGamePiece = (game: Game, coordinate: string): string => {
     key += "dark";
   }
 
-  const { pieces, moves } = game.toJSON().game;
+  const { pieces, moves, check } = game.toJSON().game;
 
+  let piece = null;
   if (Object.prototype.hasOwnProperty.call(pieces, coordinate)) {
-    const piece = pieces[coordinate];
+    piece = pieces[coordinate];
     const fixedPiece =
       piece === piece.toUpperCase() ? piece + piece : piece.toUpperCase();
     key += "_" + fixedPiece;
   }
 
   if (game.selectedPiece === coordinate) {
-    key += "_" + "selected";
+    key += "_selected";
+  } else if (check && piece === "K") {
+    key += "_error";
   }
 
   if (
@@ -40,7 +45,7 @@ const getGamePiece = (game: Game, coordinate: string): string => {
     Object.prototype.hasOwnProperty.call(moves, game.selectedPiece) &&
     moves[game.selectedPiece].includes(coordinate)
   ) {
-    key += "_" + "destination";
+    key += "_destination";
   }
 
   return key + ".jpg";
@@ -51,9 +56,7 @@ export const loader: LoaderFunction = async ({
   request,
 }): Promise<Response> => {
   // GitHub disables this functionality, so serve GENERAL game on GitHub
-  const isGithub =
-    request.headers.get("referer") != null &&
-    request.headers.get("referer")!.includes("github.com");
+  const isGithub = isFromGithub(request);
   const gameId = isGithub
     ? "GENERAL"
     : request.headers.get("Fly-Client-IP") || "GENERAL";
@@ -69,11 +72,18 @@ export const loader: LoaderFunction = async ({
     const currentCoord = coordinate.toUpperCase();
     const game = gameRoom.getGame(gameId);
 
-    return redirect(getGamePiece(game, currentCoord), {
-      status: 302,
+    const piece = getGamePiece(game, currentCoord);
+    const img = fs.readFileSync(path.join("public", "chess", piece));
+
+    return new Response(img, {
+      status: 200,
       headers: {
-        "Cache-Control": "private, no-cache, no-store, must-revalidate",
+        "Content-Type": "image/jpeg",
+        "Content-Length": img.length.toString(),
+        "Cache-Control": "no-cache, no-store",
         Expires: "-1",
+        "Last-Modified": "Mon, 01 Jan 2999 00:00:00 GMT",
+        Etag: Date.now().toString(),
         Pragma: "no-cache",
       },
     });

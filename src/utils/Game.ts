@@ -1,5 +1,6 @@
 import * as jsChessEngine from "js-chess-engine";
 import type { GameJson, GameStats } from "~/types/game";
+import type { Coordinate } from "js-chess-engine";
 
 export default class Game {
   readonly gameId: string;
@@ -26,12 +27,28 @@ export default class Game {
     return this.#selectedPiece;
   }
 
+  get moves(): Coordinate[] {
+    if (this.#selectedPiece == null) {
+      return [];
+    }
+
+    return this.#game.moves(this.#selectedPiece);
+  }
+
   get isFinished(): boolean {
-    return this.#game.exportJson().isFinished;
+    return this.#game.board.configuration.isFinished;
   }
 
   select(coordinate: string): void {
-    this.#selectedPiece = coordinate !== this.selectedPiece ? coordinate : null;
+    this.#selectedPiece = coordinate;
+    console.log(
+      `[Game: ${this.gameId}]: Select piece at ${this.#selectedPiece}.`
+    );
+  }
+
+  deselect(): void {
+    this.#selectedPiece = null;
+    console.log(`[Game: ${this.gameId}]: Deselect piece.`);
   }
 
   move(to: string): void {
@@ -40,15 +57,25 @@ export default class Game {
     }
 
     this.#game.move(this.#selectedPiece, to);
-    this.#game.aiMove(3);
+    console.log(
+      `[Game: ${this.gameId}]: Move ${this.#selectedPiece} to ${to}.`
+    );
+
+    this.#game.aiMove(2);
     this.#selectedPiece = null;
     this.stats.totalMoves += 1;
   }
 
   restart(): void {
     this.stats.round += 1;
-    this.stats.aiWins += 1;
+    if (this.#game.board.configuration.turn !== "white") {
+      this.stats.playerWins += 1;
+    } else {
+      this.stats.aiWins += 1;
+    }
     this.#game = new jsChessEngine.Game();
+
+    console.log(`[Game: ${this.gameId}]: Restart game.`);
   }
 
   toJSON(): GameJson {
